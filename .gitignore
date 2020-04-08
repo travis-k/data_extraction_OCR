@@ -10,5 +10,4 @@ venv/
 ac_get/
 icp.m
 main_icp.m
-adj_page.png
 main_old.py
