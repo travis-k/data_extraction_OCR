@@ -195,7 +195,6 @@ str_group = extract_textregion(page_data, template_regions['group'], s, R, t)
 
 # Identifying part numbers on this page
 img_part_number = extract_subregion(adj_page, template_regions['part_number'])
-cv2.imwrite('img_part_number.png', img_part_number)
 part_data = pytesseract.image_to_data(img_part_number, config='--oem 1 --psm 4 --user-words RR_IPC.user-words',
                                  output_type=Output.DICT)
 
