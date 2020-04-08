@@ -175,13 +175,13 @@ for props in regions:
 cleaned_page = clear_border(cleaned_page, bgval=255)  # Removing any black border that may exist due to the scan
 
 # Page transformation to template, using ICP from pycpd
-# [adj_page, s, R, t] = align_images(template, cleaned_page, page)
+[adj_page, s, R, t] = align_images(template, cleaned_page, page)
 
 # This is a shortcut to bypass ICP during testing
-adj_page = cv2.imread('images/adj_page.png')
-s = 1.1784858241565166
-R = np.array([[0.99999582,  0.00289168], [-0.00289168,  0.99999582]])
-t = np.array([-348.01448184, -375.05771191])
+# adj_page = cv2.imread('images/adj_page.png')
+# s = 1.1784858241565166
+# R = np.array([[0.99999582,  0.00289168], [-0.00289168,  0.99999582]])
+# t = np.array([-348.01448184, -375.05771191])
 
 ######################################################################################################################
 # OCR
