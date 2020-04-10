@@ -8,6 +8,7 @@ This project uses the page format to segment the page into pre-defined areas, an
 3. Using this transformation, different areas of the page are segmented and read in via OCR
 4. The defining feature, the ''Part Number'' column, is used to break the page vertically, seperating the information for each part
 
+**NOTES**: Point-set registration was used instead of the normal feature mapping (like OpenCV template matching) because feature extraction on the scanned page can be hugely unreliable. Also, for the OCR, a .user-words file is provided containing common words from this section. In a real-world application, I would use OCR to read through the text-based pages of this document to build a custom .user-words file, rather than manually building one.
 
 ## Walkthrough
 A typical page from this document:
@@ -32,7 +33,7 @@ Now that we know the transformation, and where the data we want is on the templa
 
 Using pytesseract, we can get the part numbers (as well as their locations on the scanned page)
 ```
-['618064', '618001', '618046', '616457', '616873', '608758', '608782', '608760', '*608759', '608547', '608783', '608761', '608547', '608787', '*608763', '600191', '604674', '601091', '601443', '606345', '603589', '608742', '616383', '*600365', '600161', '600279', '616377', '615836', '600287', '600289', '600255']
+['618064', '618001', '618046', '616457', '616873', '608758', '608782', '608760', '*608759', '608547', '608783', '608761', '608547', '608787', '*608763', '600191', '604674', '601091', '601443', '606345', '603589', '608742', '4616383', '*600365', '600161', '600279', '616377', '615836', '600287', '600289', '600255']
 ```
 
 From this point, we move section-by-section to extract text, knowing the location of what we want, and assign it to the part number that is on that vertical location. For this example, I also extracted the part description and the figure and index number, but this technique will also be used to log the units per assembly for each engine variant.
@@ -59,7 +60,6 @@ Part Number: 616873
 	Description: Block and Head Assembly - Cylinder "A" unit (super- sedes 615451)
 Part Number: 608758
 	Group: GROUP— Cylinder
-  Figure and Index: (8, 1)
 	Description: - Coolant inlet
 Part Number: 608782
 	Group: GROUP— Cylinder
